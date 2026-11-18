@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Crew Event Dashboard</title>
+    <meta name="theme-color" content="#07070a">
+    <meta name="description" content="Field Crew Event Dashboard — crew event tracking, stored only in this browser. No account, no backend.">
+    <link rel="icon" href="icons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/favicon-192.png">
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Field Crew Event Dashboard</h1>
+        <button id="addEventBtn" class="add-event">Add Event</button>
+    </header>
+    <p class="demo-note">First run shows 4 sample events (fictional names). Add your own — everything is stored only in this browser (localStorage). Nothing leaves your device.</p>
+    <section id="stats">
+        <div class="stat-card">
+            <h2>Total Events</h2>
+            <p id="totalEvents">0</p>
+        </div>
+        <div class="stat-card">
+            <h2>Open Events</h2>
+            <p id="openEvents">0</p>
+        </div>
+        <div class="stat-card">
+            <h2>Closed Events</h2>
+            <p id="closedEvents">0</p>
+        </div>
+        <div class="stat-card">
+            <h2>Overdue Events</h2>
+            <p id="overdueEvents">0</p>
+        </div>
+        <div class="stat-card">
+            <h2>Avg Response</h2>
+            <p id="avgResponse">N/A</p>
+        </div>
+    </section>
+    <div class="filter">
+        <label for="filterSelect">Filter by Type:</label>
+        <select id="filterSelect">
+            <option value="All">All</option>
+            <option value="Resignation">Resignation</option>
+            <option value="No-Call/No-Show">No-Call/No-Show</option>
+            <option value="Policy Violation">Policy Violation</option>
+            <option value="Attendance Issue">Attendance Issue</option>
+        </select>
+    </div>
+    <div class="container">
+        <table id="eventTable">
+            <thead>
+                <tr>
+                    <th>Employee</th>
+                    <th>Type</th>
+                    <th>Event Time</th>
+                    <th>Description</th>
+                    <th>Response Time</th>
+                    <th>Resolution</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows are populated dynamically -->
+            </tbody>
+        </table>
+    </div>
+    <!-- Modal for adding new events -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitle">Add Event</h2>
+            <form id="eventForm">
+                <label for="employeeName">Employee Name</label>
+                <input type="text" id="employeeName" name="employeeName" required>
+
+                <label for="eventType">Event Type</label>
+                <select id="eventType" name="eventType" required>
+                    <option value="Resignation">Resignation</option>
+                    <option value="No-Call/No-Show">No-Call/No-Show</option>
+                    <option value="Policy Violation">Policy Violation</option>
+                    <option value="Attendance Issue">Attendance Issue</option>
+                </select>
+
+                <label for="description">Description</label>
+                <textarea id="description" name="description" rows="3" required></textarea>
+
+                <label for="eventTime">Event Time (optional)</label>
+                <input type="datetime-local" id="eventTime" name="eventTime">
+
+                <div class="buttons">
+                    <button type="submit">Save</button>
+                    <button type="button" id="cancelBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

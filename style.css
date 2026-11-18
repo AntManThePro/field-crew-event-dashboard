@@ -182,3 +182,8 @@ tr.alert td { border-left: 3px solid var(--pink); }
     font-weight: 700;
     border-color: var(--green);
 }
+
+/* Footer + Easter egg line (tiny, muted, out of the way). */
+.foot { max-width: 1100px; margin: 28px auto 0; padding: 0 16px; color: #707784; font-size: 11px; text-align: center; }
+.foot-egg { max-width: 1100px; margin: 8px auto 24px; padding: 0 16px; color: #81919c; font-size: 11px; line-height: 1.55; text-align: center; }
+.hidden { display: none !important; }

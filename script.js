@@ -279,6 +279,21 @@ document.addEventListener('DOMContentLoaded', () => {
         renderStats();
         renderTable();
     });
+    /* EASTER EGG: triple-click the footer ant -> DoubleA's fine print. Harmless; touches no events. */
+    let crewEggClicks = 0, crewEggTimer = null;
+    const crewAnt = document.getElementById('crewAnt');
+    if (crewAnt) {
+        crewAnt.addEventListener('click', () => {
+            crewEggClicks++;
+            clearTimeout(crewEggTimer);
+            crewEggTimer = setTimeout(() => { crewEggClicks = 0; }, 2000);
+            if (crewEggClicks >= 3) {
+                crewEggClicks = 0;
+                document.getElementById('crewEgg').classList.toggle('hidden');
+            }
+        });
+    }
+
     // Delegate respond button clicks
     document.querySelector('#eventTable tbody').addEventListener('click', (e) => {
         const btn = e.target;
